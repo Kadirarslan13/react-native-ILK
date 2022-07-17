@@ -1,51 +1,45 @@
-import React from "react";
-import {SafeAreaView,
-    FlatList,
-    StyleSheet,
-    TextInput, 
-    Text} from "react-native"
-import NewsPatika from "./components/NewsPatika";
-import Patika_data from "./Patika_data.json";
+import React, {useState} from "react";
+import { SafeAreaView,View,Text,TextInput, Button,StyleSheet, FlatList } from "react-native";
+import SearchBar from "./components/SearchBar";
 
-function App (){
-  const [text, onChangeText] = React.useState("Ara..");
-  const [number, onChangeNumber] = React.useState(null);
+function App () {
 
-  const renderPatika = ({item}) => <NewsPatika store= {item} />
-  const numColumns = 2;
+
+const [counter, setCounter]= useState(0)
+
+function increaseCounter(){
+  setCounter(counter + 1)
+}
+
+
+
   return (
     <SafeAreaView style = {styles.container}>
-      <Text style = {styles.head}>PATIKASTORE</Text>
-      <TextInput 
-        style={styles.input}
-        onChangeText={onChangeText}
-        value={text}> </TextInput>
-        <FlatList
-        data={Patika_data}
-        renderItem = {renderPatika}
-        numColumns = {numColumns}
-        />
+      <View style = {styles.inner_container} >
+        <Text style = {styles.title}>Yapılacak</Text>
+        <Text style = {styles.title}> {counter} </Text>
+        
+      </View>
+      <SearchBar
+      />
+
     </SafeAreaView>
   )
 }
-
-const styles= StyleSheet.create({
-  input: {
-    height: 40,
-    margin: 12,
-    borderRadius:10,
-    padding: 10,
-    backgroundColor: "darkgray",
-  },
-  container: {
-    flex: 1,
-    backgroundColor: "white",
-      
-  },
-  head : {
-    fontSize: 50,
-    color: "purple",
-  }
-})
-
 export default App;
+
+const styles = StyleSheet.create ({
+  container: {
+    flex:1,
+    backgroundColor: "#263238"
+  },
+  inner_container: {
+    flex:1,
+    flexDirection:"row",
+    },
+    title: {
+      fontSize:40,
+      color: "orange"
+    },
+
+})
