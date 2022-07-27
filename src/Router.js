@@ -1,24 +1,21 @@
 import React from "react";
-import {} from "react-native"
-import {createNativeStackNavigator} from "@react-navigation/native-stack"
-import { NavigationContainer } from "@react-navigation/native";
+import {SafeAreaView,Text} from "react-native"
+import {NavigationContainer} from "@react-navigation/native"
+import {createBottomTabNavigator} from "@react-navigation/bottom-tabs"
 
-import Categories from "./Pages/Categories"
-import Meals from "./Pages/Meals"
-import Detail from "./Pages/Detail"
+import Jobs from "./Pages/Jobs";
+import FavoritedJobs from "./Pages/FavoritedJobs";
 
-const Stack = createNativeStackNavigator()
+const Tab = createBottomTabNavigator()
 
-function Router (){
+function Router () {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name="Categories" component={Categories}/>
-        <Stack.Screen name="Meals" component={Meals}/>
-        <Stack.Screen name="Detail" component={Detail}/>
-
-      </Stack.Navigator>
+      <Tab.Navigator>
+        <Tab.Screen name="Jobs" component={Jobs} options={{headerTintColor:"red"}} />
+        <Tab.Screen name="FavoritedJobs" component={FavoritedJobs} />
+      </Tab.Navigator>
     </NavigationContainer>
   )
 }
-export default Router
+export default Router;
